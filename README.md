@@ -2,3 +2,4 @@
 
 feature-a
 feature-b
+feature-c

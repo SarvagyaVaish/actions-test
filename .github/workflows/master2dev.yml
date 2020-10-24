@@ -7,7 +7,7 @@ name: Master2Dev
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,8 +20,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-#         with:
-#           fetch-depth: 200
 
       - name: Merge master to dev
         uses: tukasz/direct-merge-action@v1

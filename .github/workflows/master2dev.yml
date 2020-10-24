@@ -24,13 +24,8 @@ jobs:
 #           fetch-depth: 200
 
       - name: Merge master to dev
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-          git fetch origin dev
-          git fetch origin master
-          
-          git checkout dev
-          git merge origin/master -m "Merging master to dev"
-          git push origin dev
+        uses: tukasz/direct-merge-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          source-branch: master
+          target-branch: dev

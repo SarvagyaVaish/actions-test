@@ -20,18 +20,17 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: Fetch dev
-        run: git fetch origin dev
+#         with:
+#           fetch-depth: 200
 
-      - name: Fetch master
-        run: git fetch origin master
+      - name: Merge master to dev
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
 
-      - name: Checkout dev
-        run: git checkout dev
-
-      - name: Merge master
-        run: git merge origin/master -m "Merging master to dev"
-
-      - name: Push
-        run: git push origin dev
+          git fetch origin dev
+          git fetch origin master
+          
+          git checkout dev
+          git merge origin/master -m "Merging master to dev"
+          git push origin dev

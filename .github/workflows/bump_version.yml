@@ -13,6 +13,9 @@ jobs:
       
       - name: Setup Python
         uses: actions/setup-python@v2.1.4
+      
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v2
 
       - name: Increment version in release metadata file
         run: python increment_sw_release.py

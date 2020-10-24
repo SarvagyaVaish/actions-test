@@ -1,0 +1,22 @@
+name: Bump Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bump_version:
+
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2.1.4
+
+      - name: Increment version in release metadata file
+        run: python increment_sw_release.py
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Incrementing SW version

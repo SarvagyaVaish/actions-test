@@ -22,10 +22,10 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Fetch dev
-        run: git fetch dev
+        run: git fetch origin dev
 
       - name: Fetch master
-        run: git fetch master
+        run: git fetch origin master
 
       - name: Checkout dev
         run: git checkout dev
